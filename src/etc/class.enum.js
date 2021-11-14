@@ -1,7 +1,8 @@
 const CLASS = Object.freeze({
 
-    // any character
+    // any character and dot
     any: '.',
+    dot: '\\.',
 
     // positive and negative digits
     pdigit: '\\d',

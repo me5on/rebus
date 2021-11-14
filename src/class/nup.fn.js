@@ -6,13 +6,16 @@ import IS from '@me5on/is';
 // @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Unicode_Property_Escapes
 
 
+const {nil, str} = IS;
+
+
 // negative unicode property
 
 
 const nup = (
 
     $ => (
-        IS.nil($) || !(IS.str($) || $ instanceof String)
+        nil($) || !str($)
             ? ''
             : $ && `\\P{${$}}`
     )

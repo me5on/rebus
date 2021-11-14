@@ -1,6 +1,9 @@
 import IS from '@me5on/is';
 
 
+const {arr} = IS;
+
+
 const respread = (
 
     $$ => {
@@ -13,7 +16,7 @@ const respread = (
             [$$] = $$;
         }
 
-        if (!IS.arr($$)) {
+        if (!arr($$)) {
             $$ = [$$];
         }
 

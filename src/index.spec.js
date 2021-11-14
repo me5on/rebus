@@ -15,10 +15,20 @@ const sortedKeys = (
 );
 
 
-const sortedValues = (
+const sortedEntries = (
 
     $ => $
-        ? Object.values($)
+        ? Object.entries($).sort(
+            ([a], [b]) => (
+                a < b
+                    ? 0 - 1
+                    : (
+                        a > b
+                            ? 1
+                            : 0
+                    )
+            ),
+        )
         : []
 
 );
@@ -27,9 +37,9 @@ const sortedValues = (
 describe('rebus lib', () => {
 
     const asrt = ['bgn', 'end', 'pwb', 'nwb'].sort();
-    const flag = ['indices', 'global', 'ignore', 'multiline', 'dotall', 'unicode', 'sticky'].sort();
+    const flag = ['indices', 'global', 'ignore', 'multiline', 'none', 'dotall', 'unicode', 'sticky'].sort();
     const klas = [
-        'any',
+        'any', 'dot',
         'pdigit', 'ndigit', 'pword', 'nword', 'pspace', 'nspace',
         'backspace', 'tab', 'vtab', 'return', 'newline', 'formfeed', 'nul',
     ].sort();
@@ -45,11 +55,13 @@ describe('rebus lib', () => {
     ].sort();
 
     const funs = [
+        'bgn', 'box', 'end', 'nla', 'nlb', 'pla', 'plb',
         'ctl', 'hex', 'utf', 'uni',
         'pup', 'nup', 'puv', 'nuv',
-        'bgn', 'end', 'nla', 'nlb', 'pla', 'plb',
-        'nc', 'pc', 'or',
         'cap', 'nocap',
+        'gany', 'gexact', 'gin', 'gmin', 'gmaybe', 'gsome',
+        'lany', 'lexact', 'lin', 'lmin', 'lmaybe', 'lsome',
+        'nc', 'pc', 'or',
         'ref', 'iref', 'nref',
     ].sort();
 
@@ -97,8 +109,13 @@ describe('rebus lib', () => {
             );
 
             it(
-                'fields are non-empty string',
-                () => void expect(sortedValues($).every($ => !IS.str.empty($))).toEqual(true),
+                'fields except `none` are non-empty string',
+                () => void expect(sortedEntries($).every(
+                    ([k, v]) => 'none' === k
+                        ? '' === v
+                        : !IS.str.empty(v),
+                ))
+                    .toEqual(true),
             );
 
         });

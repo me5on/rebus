@@ -5,6 +5,9 @@ import first from '../util/first.fn.js';
 import padz from '../util/padz.fn.js';
 
 
+const {nil, str, int} = IS;
+
+
 const RE = /[^0-9A-Fa-f]/gu;
 
 const BASE = 16;
@@ -17,15 +20,15 @@ const uni = (
 
     $ => {
 
-        if (IS.nil($)) {
+        if (nil($)) {
             return '';
         }
 
-        if (IS.int($)) {
+        if (int($)) {
 
             $ = ($ - 0).toString(BASE);
 
-        } else if (IS.str($)) {
+        } else if (str($)) {
 
             $ = first(MAX_N, String($).replaceAll(RE, ''));
 

@@ -1,4 +1,5 @@
 const FLAG = Object.freeze({
+    none:      '',
     indices:   'd',
     global:    'g',
     ignore:    'i',

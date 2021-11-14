@@ -2,6 +2,7 @@
 
 
 import bgn from './assert/bgn.fn.js';
+import box from './assert/box.fn.js';
 import end from './assert/end.fn.js';
 import nla from './assert/nla.fn.js';
 import nlb from './assert/nlb.fn.js';
@@ -22,6 +23,18 @@ import FLAG from './etc/flag.enum.js';
 import UNICODE from './etc/unicode.enum.js';
 import cap from './group/cap.fn.js';
 import nocap from './group/nocap.fn.js';
+import gany from './quantifier/gany.fn.js';
+import gexact from './quantifier/gexact.fn.js';
+import gin from './quantifier/gin.fn.js';
+import gmaybe from './quantifier/gmaybe.fn.js';
+import gmin from './quantifier/gmin.fn.js';
+import gsome from './quantifier/gsome.fn.js';
+import lany from './quantifier/lany.fn.js';
+import lexact from './quantifier/lexact.fn.js';
+import lin from './quantifier/lin.fn.js';
+import lmaybe from './quantifier/lmaybe.fn.js';
+import lmin from './quantifier/lmin.fn.js';
+import lsome from './quantifier/lsome.fn.js';
 import nc from './range/nc.fn.js';
 import or from './range/or.fn.js';
 import pc from './range/pc.fn.js';
@@ -34,22 +47,26 @@ import rebus from './util/rebus.fn.js';
 Object.assign(
     rebus,
     {
-
-        ESC, esc: ESC, escape: ESC,
-
-        ASSERT, A: ASSERT, assert: ASSERT,
-        CLASS, C:  CLASS, class: CLASS,
-        FLAG, F:   FLAG, flag: FLAG,
-
+        // etc
+        ESC, esc:   ESC, escape: ESC,
+        ASSERT, A:  ASSERT, assert: ASSERT,
+        CLASS, C:   CLASS, class: CLASS,
+        FLAG, F:    FLAG, flag: FLAG,
         UNICODE, U: UNICODE, unicode: UNICODE,
-
+        // assert
+        bgn, box, end, nla, nlb, pla, plb,
+        // class
         ctl, hex, utf, uni,
         pup, nup, puv, nuv,
-        bgn, end, nla, nlb, pla, plb,
+        // group
         cap, nocap,
+        // quantifier
+        gany, gexact, gin, gmaybe, gmin, gsome,
+        lany, lexact, lin, lmaybe, lmin, lsome,
+        // range
         nc, pc, or,
+        // reference
         ref, iref, nref,
-
     },
 );
 

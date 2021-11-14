@@ -4,6 +4,9 @@ import IS from '@me5on/is';
 import first from '../util/first.fn.js';
 
 
+const {int} = IS;
+
+
 const BASE = 'A'.codePointAt(0) - 1;
 
 const A = 1;
@@ -17,7 +20,7 @@ const ctl = (
     $ => {
 
         $ = (
-            IS.int($) && A <= $ && Z >= $
+            int($) && A <= $ && Z >= $
                 ? String.fromCodePoint(BASE + $)
                 : first(N, $).toUpperCase()
         );
