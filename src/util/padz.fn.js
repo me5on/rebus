@@ -1,17 +1,30 @@
+import IS from '@me5on/is';
+
+
+const PAD = '0';
+
+
 const padz = (
 
-    (n, string) => {
+    // eslint-disable-next-line no-shadow
+    (length, value) => {
 
-        if (!string) {
-            return '0'.repeat(n);
-        }
+        const string = String(value ?? '');
 
-        const diff = n - string.length;
-        if (1 > diff) {
+        if (!IS.int(length) || 0 > length) {
             return string;
         }
 
-        return '0'.repeat(diff) + string;
+        if (!string) {
+            return PAD.repeat(length);
+        }
+
+        const diff = length - string.length;
+        return (
+            1 > diff
+                ? string
+                : PAD.repeat(diff) + string
+        );
     }
 
 );

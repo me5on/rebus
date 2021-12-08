@@ -1,6 +1,11 @@
+const stringify = (
+    $ => String($ ?? '')
+);
+
+
 const fuse = (
 
-    $ => $?.join?.('')
+    $ => $?.map(stringify).join?.('')
 
 );
 

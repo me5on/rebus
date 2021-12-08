@@ -1,39 +1,41 @@
 import IS from '@me5on/is';
 import create from './create.fn.js';
-import fuse from './fuse.fn.js';
 
 
-const {arr, rgx} = IS;
+const {rgx, nil: {missing: mis}} = IS;
 
 
 const rebus = (
 
-    (flags, regex, ...$$) => {
+    (flags, pattern, ...$$) => {
 
-        flags ??= '';
-        if (arr(flags)) {
-            flags = fuse(flags);
+        !mis(pattern) && $$.unshift(pattern);
+        !mis(flags) && $$.unshift(flags);
+
+        let [first, second, ...rest] = $$; // eslint-disable-line prefer-const
+
+        first ??= '';
+        second ??= '';
+
+        if (1 > $$.length) {
+            return create();
         }
 
-        if ($$.length) {
-            regex = [regex, ...$$];
+        if (1 === $$.length) {
+            return rgx(first)
+                ? create(first.flags, first.pattern)
+                : create(void (1), String(first));
         }
 
-        if (arr(regex)) {
-            regex = fuse(regex);
+        if (2 === $$.length) { // eslint-disable-line no-magic-numbers
+            return rgx(second)
+                ? create(String(first), second.pattern)
+                : create(String(first), String(second));
         }
-        
-        regex ??= '';
 
-        return (
-            rgx(regex)
-                ? create(flags, regex.pattern)
-                : (
-                    rgx(flags)
-                        ? create(flags.flags, flags.pattern)
-                        : create(flags, String(regex))
-                )
-        );
+        // case is 2 < $$.length
+        return create(String(first), second, ...rest);
+
     }
 
 );

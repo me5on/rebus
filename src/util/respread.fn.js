@@ -6,21 +6,27 @@ const {arr} = IS;
 
 const respread = (
 
-    $$ => {
+    (...$$) => {
 
-        if (0 === $$?.length) {
-            return $$;
+        if (!$$?.length) {
+            return void (1);
+        }
+        
+        let [first] = $$;
+
+        if (0 === first?.length) {
+            return first;
         }
 
-        if (1 === $$?.length) {
-            [$$] = $$;
+        if (1 === first?.length) {
+            [first] = first;
         }
 
-        if (!arr($$)) {
-            $$ = [$$];
+        if (!arr(first)) {
+            first = [first];
         }
 
-        return $$;
+        return first;
 
     }
 

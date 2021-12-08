@@ -1,14 +1,13 @@
-const RE = /[^A-Za-z]/gu;
+const RE = /[^A-Za-z0-9]/gu;
+
 
 const first = (
 
-    (n, string) => {
-        if (!string) {
-            return '';
-        }
-        return String(string).replaceAll(RE, '').slice(0, n);
-    }
-
+    (count, string) => (
+        string
+            ? String(string).replaceAll(RE, '').slice(0, count)
+            : ''
+    )
 );
 
 
