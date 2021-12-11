@@ -1,3 +1,5 @@
+![](icon.png)
+
 # Rebus
 
 You can...

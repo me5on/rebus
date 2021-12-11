@@ -4,7 +4,7 @@ import IS from '@me5on/is';
 // quantifiers, @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Quantifiers
 
 
-const {str, number: {int}} = IS;
+const {number: {int}} = IS;
 
 
 // lazy minimal number of occurrences
