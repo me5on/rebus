@@ -12,11 +12,15 @@ const {str, number: {int}} = IS;
 
 const gexact = (
 
-    (count, $) => (
-        int(count) && 0 < count && str($)
-            ? `${$}{${count}}`
-            : ''
-    )
+    (count, $) => {
+        $ = String($ ?? '');
+        
+        return (
+            $ && int(count) && 0 < count
+                ? `${$}{${count}}`
+                : ''
+        );
+    }
 
 );
 

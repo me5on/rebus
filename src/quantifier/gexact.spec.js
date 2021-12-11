@@ -1,15 +1,14 @@
 /* eslint-disable no-magic-numbers */
 
-
 import {describe, expect, it} from '@jest/globals';
-import or from './or.fn.js';
+import gexact from './gexact.fn.js';
 
 
-describe('rebus.or', () => {
+describe('rebus.gexact', () => {
 
     it(
         'is a function',
-        () => void expect(or).toBeFun(),
+        () => void expect(gexact).toBeFun(),
     );
 
 
@@ -18,15 +17,14 @@ describe('rebus.or', () => {
         [''],
         ['', void (1)],
         ['', null],
-        ['', ''],
-        ['a', 'a'],
-        ['1', 1],
-        ['\\', '\\'],
-        ['1|2|3|4', [1, 2, 3, 4]],
-        ['1|2|3|4', 1, 2, 3, 4],
+        ['', 'asdf'],
+        ['', 1],
+        ['3{2}', 2, 3, 4],
+        ['34{2}', 2, '34'],
+        ['asdf{2}', 2, 'asdf'],
     ])(
         'returns correct string %p for %p',
-        expect(or).toMapExact,
+        expect(gexact).toMapExact,
     );
 
 });

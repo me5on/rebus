@@ -1,6 +1,8 @@
 # Rebus
 
-## You can repackage old rexes
+You can...
+
+## ... repackage old rexes
 
 Running:
 
@@ -41,9 +43,7 @@ provides:
 4 /.*/          -> [ 'asdf', index: 0, input: 'asdf', groups: undefined ]
 ```
 
-&square;
-
-## 1
+## ... build long rexes
 
 ```js
 const {
@@ -87,10 +87,13 @@ console.log(re);
 results in:
 > /^npm-debug\.log$|^\..*\.swp$|^\.DS_Store$|^\.AppleDouble$|^\.LSOverride$|^Icon\r$|^\._.*|^\.Spotlight-V100(?:$|\/)|\.Trashes|^__MACOSX$|~$|^Thumbs\.db$|^ehthumbs\.db$|^Desktop\.ini$|@eaDir$/
 
-## 2
+## ... use Unicode classes
+
+Code like:
 
 ```js
-const {F, pup, nup, puv, nuv, U, UNICODE: {binary: UB, general: UG, prop: UP}} = rebus;
+const {F, pup, nup, puv, nuv, U} = rebus;
+const {UNICODE: {binary: UB, general: UG, prop: UP}} = rebus;
 
 const s = 'абв (@#?) 123 АБВ αβγ 🙈🙉🙊🐵🐒\0';
 
@@ -99,16 +102,39 @@ const log = (...$$) => {
   console.log(re, s.match(re));
 };
 
-log(pup(UG.letter.uppercase));      // /\p{Lu}/gu [ 'А', 'Б', 'В' ]
-log(pup(UG.mark));                  // /\p{M}/gu null
-log(pup(UG.other.control));         // /\p{Cc}/gu [ '\x00' ]
-log(nuv(UP.general, UG.letter));    // /\P{gc=L}/gu [ ' ', '(',  '@', '#', '?',  ')', ' ', '1', '2',  '3',  ' ', ' ', ' ',  '🙈', '🙉', '🙊', '🐵', '🐒', '\x00' ]
-log(pup(UB.emoji));                 // /\p{Emoji}/gu [ '#', '1', '2', '3', '🙈', '🙉', '🙊', '🐵', '🐒']
-log(puv(UP.script, U.script.cyrl)); // /\p{sc=Cyrillic}/gu [ 'а', 'б', 'в', 'А', 'Б', 'В' ]
-log(puv(UP.script, U.script.grek)); // /\p{sc=Greek}/gu [ 'α', 'β', 'γ' ]
+log(pup(UG.letter.uppercase));
+log(pup(UG.mark));
+log(pup(UG.other.control));
+log(nuv(UP.general, UG.letter));
+log(pup(UB.emoji));
+log(puv(UP.script, U.script.cyrl));
+log(puv(UP.script, U.script.grek));
 ```
 
-## 3
+produces:
+
+```bash
+/\p{Lu}/gu [ 'А', 'Б', 'В' ]
+/\p{M}/gu null
+/\p{Cc}/gu [ '\x00' ]
+/\P{gc=L}/gu [
+  ' ',  '(',  '@',    '#',
+  '?',  ')',  ' ',    '1',
+  '2',  '3',  ' ',    ' ',
+  ' ',  '🙈', '🙉',   '🙊',
+  '🐵', '🐒', '\x00'
+]
+/\p{Emoji}/gu [
+  '#',  '1',  '2',
+  '3',  '🙈', '🙉',
+  '🙊', '🐵', '🐒'
+]
+/\p{sc=Cyrillic}/gu [ 'а', 'б', 'в', 'А', 'Б', 'В' ]
+/\p{sc=Greek}/gu [ 'α', 'β', 'γ' ]
+
+```
+
+## ... define references for replacement
 
 ```js
 const {pc, cap, ref, F, C, gsome, gany} = rebus;

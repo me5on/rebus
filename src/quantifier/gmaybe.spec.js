@@ -1,15 +1,14 @@
 /* eslint-disable no-magic-numbers */
 
-
 import {describe, expect, it} from '@jest/globals';
-import or from './or.fn.js';
+import gmaybe from './gmaybe.fn.js';
 
 
-describe('rebus.or', () => {
+describe('rebus.gmaybe', () => {
 
     it(
         'is a function',
-        () => void expect(or).toBeFun(),
+        () => void expect(gmaybe).toBeFun(),
     );
 
 
@@ -18,15 +17,14 @@ describe('rebus.or', () => {
         [''],
         ['', void (1)],
         ['', null],
-        ['', ''],
-        ['a', 'a'],
-        ['1', 1],
-        ['\\', '\\'],
-        ['1|2|3|4', [1, 2, 3, 4]],
-        ['1|2|3|4', 1, 2, 3, 4],
+        ['asdf?', 'asdf'],
+        ['1?', 1],
+        ['a?', 'a', 2],
+        ['1?', 1, 'b'],
+        ['asdf?', 'asdf'],
     ])(
         'returns correct string %p for %p',
-        expect(or).toMapExact,
+        expect(gmaybe).toMapExact,
     );
 
 });

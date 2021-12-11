@@ -4,7 +4,7 @@ import IS from '@me5on/is';
 // quantifiers, @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Quantifiers
 
 
-const {str, number: {int}} = IS;
+const {number: {int}} = IS;
 
 
 // lazy between two numbers of occurrences
@@ -12,15 +12,19 @@ const {str, number: {int}} = IS;
 
 const lin = (
 
-    (from, to, $) => (
-        int(from) && int(to) && 0 < from && 0 < to && str($)
-            ? (
-                from > to
-                    ? `${$}{${to},${from}}?`
-                    : `${$}{${from},${to}}?`
-            )
-            : ''
-    )
+    (from, to, $) => {
+        $ = String($ ?? '');
+
+        if (!($ && int(from) && int(to) && 0 < from && 0 < to)) {
+            return '';
+        }
+
+        return (
+            from > to
+                ? `${$}{${to},${from}}?`
+                : `${$}{${from},${to}}?`
+        );
+    }
 
 );
 

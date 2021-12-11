@@ -7,16 +7,20 @@ import IS from '@me5on/is';
 // lazy exact number of occurrences
 
 
-const {str, number: {integer}} = IS;
+const {number: {int}} = IS;
 
 
 const lexact = (
 
-    (count, $) => (
-        integer(count) && 0 < count && str($)
-            ? `${$}{${count}}?`
-            : ''
-    )
+    (count, $) => {
+        $ = String($ ?? '');
+
+        return (
+            $ && int(count) && 0 < count
+                ? `${$}{${count}}?`
+                : ''
+        );
+    }
 
 );
 

@@ -1,15 +1,14 @@
 /* eslint-disable no-magic-numbers */
 
-
 import {describe, expect, it} from '@jest/globals';
-import or from './or.fn.js';
+import lmin from './lmin.fn.js';
 
 
-describe('rebus.or', () => {
+describe('rebus.lmin', () => {
 
     it(
         'is a function',
-        () => void expect(or).toBeFun(),
+        () => void expect(lmin).toBeFun(),
     );
 
 
@@ -18,15 +17,15 @@ describe('rebus.or', () => {
         [''],
         ['', void (1)],
         ['', null],
-        ['', ''],
-        ['a', 'a'],
-        ['1', 1],
-        ['\\', '\\'],
-        ['1|2|3|4', [1, 2, 3, 4]],
-        ['1|2|3|4', 1, 2, 3, 4],
+        ['', 'asdf'],
+        ['', 1],
+        ['', 'a', 2],
+        ['b{1,}?', 1, 'b'],
+        ['6{5,}?', 5, 6],
+        ['asdf{2,}?', 2, 'asdf'],
     ])(
         'returns correct string %p for %p',
-        expect(or).toMapExact,
+        expect(lmin).toMapExact,
     );
 
 });
