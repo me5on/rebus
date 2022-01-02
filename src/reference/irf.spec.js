@@ -1,14 +1,14 @@
 /* eslint-disable no-magic-numbers */
 
 import {describe, expect, it} from '@jest/globals';
-import iref from './iref.fn.js';
+import irf from './irf.fn.js';
 
 
-describe('rebus.iref', () => {
+describe('rebus.irf', () => {
 
     it(
         'is a function',
-        () => void expect(iref).toBeFun(),
+        () => void expect(irf).toBeFun(),
     );
 
 
@@ -20,7 +20,7 @@ describe('rebus.iref', () => {
         ['\\1', 1],
     ])(
         'returns correct string %p for %p',
-        expect(iref).toMapExact,
+        expect(irf).toMapExact,
     );
 
 });

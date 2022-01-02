@@ -58,11 +58,11 @@ describe('rebus lib', () => {
         'bgn', 'box', 'end', 'nla', 'nlb', 'pla', 'plb',
         'ctl', 'hex', 'utf', 'uni',
         'pup', 'nup', 'puv', 'nuv',
-        'cap', 'nocap',
+        'cap', 'kap', 'nap',
         'gany', 'gexact', 'gin', 'gmin', 'gmaybe', 'gsome',
         'lany', 'lexact', 'lin', 'lmin', 'lmaybe', 'lsome',
         'nc', 'pc', 'or',
-        'ref', 'iref', 'nref',
+        'ref', 'irf', 'krf',
     ].sort();
 
     const fields = [...cons, ...objs.map($ => $?.[0]), ...funs].sort();

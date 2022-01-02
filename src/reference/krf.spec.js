@@ -1,14 +1,14 @@
 /* eslint-disable no-magic-numbers */
 
 import {describe, expect, it} from '@jest/globals';
-import nref from './nref.fn.js';
+import krf from './krf.fn.js';
 
 
-describe('rebus.nref', () => {
+describe('rebus.krf', () => {
 
     it(
         'is a function',
-        () => void expect(nref).toBeFun(),
+        () => void expect(krf).toBeFun(),
     );
 
 
@@ -20,7 +20,7 @@ describe('rebus.nref', () => {
         ['\\k<1>', 1],
     ])(
         'returns correct string %p for %p',
-        expect(nref).toMapExact,
+        expect(krf).toMapExact,
     );
 
 });

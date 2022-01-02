@@ -7,7 +7,7 @@ import assemble from '../util/assemble.fn.js';
 // non-capturing group
 
 
-const nocap = (
+const nap = (
 
     (...$$) => {
         const $ = assemble($$);
@@ -17,4 +17,4 @@ const nocap = (
 );
 
 
-export default nocap;
+export default nap;

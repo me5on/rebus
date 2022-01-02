@@ -10,7 +10,7 @@ const {int} = IS;
 // indexed back reference
 
 
-const iref = (
+const irf = (
 
     $ => (
         int($) && 0 < $
@@ -21,4 +21,4 @@ const iref = (
 );
 
 
-export default iref;
+export default irf;

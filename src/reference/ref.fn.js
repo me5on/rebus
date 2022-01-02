@@ -1,6 +1,6 @@
 import IS from '@me5on/is';
-import iref from './iref.fn.js';
-import nref from './nref.fn.js';
+import irf from './irf.fn.js';
+import krf from './krf.fn.js';
 
 
 // groups and ranges, @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_Expressions/Groups_and_Ranges
@@ -14,7 +14,7 @@ const {int} = IS;
 
 const ref = (
 
-    $ => int($) && 0 < $ ? iref($) : nref($)
+    $ => int($) && 0 < $ ? irf($) : krf($)
 
 );
 

@@ -22,7 +22,8 @@ import ESC from './etc/escape.const.js';
 import FLAG from './etc/flag.enum.js';
 import UNICODE from './etc/unicode.enum.js';
 import cap from './group/cap.fn.js';
-import nocap from './group/nocap.fn.js';
+import kap from './group/kap.fn.js';
+import nocap from './group/nap.fn.js';
 import gany from './quantifier/gany.fn.js';
 import gexact from './quantifier/gexact.fn.js';
 import gin from './quantifier/gin.fn.js';
@@ -38,8 +39,8 @@ import lsome from './quantifier/lsome.fn.js';
 import nc from './range/nc.fn.js';
 import or from './range/or.fn.js';
 import pc from './range/pc.fn.js';
-import iref from './reference/iref.fn.js';
-import nref from './reference/nref.fn.js';
+import irf from './reference/irf.fn.js';
+import krf from './reference/krf.fn.js';
 import ref from './reference/ref.fn.js';
 import rebus from './util/rebus.fn.js';
 
@@ -54,19 +55,22 @@ Object.assign(
         FLAG, F:    FLAG, flag: FLAG,
         UNICODE, U: UNICODE, unicode: UNICODE,
         // assert
-        bgn, box, end, nla, nlb, pla, plb,
+        bgn, box, end,
+        nla, nlb,
+        pla, plb,
         // class
         ctl, hex, utf, uni,
-        pup, nup, puv, nuv,
+        pup, nup,
+        puv, nuv,
         // group
-        cap, nocap,
+        cap, kap, nap: nocap,
         // quantifier
         gany, gexact, gin, gmaybe, gmin, gsome,
         lany, lexact, lin, lmaybe, lmin, lsome,
         // range
         nc, pc, or,
         // reference
-        ref, iref, nref,
+        ref, irf, krf,
     },
 );
 

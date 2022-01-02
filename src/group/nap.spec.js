@@ -1,14 +1,14 @@
 /* eslint-disable no-magic-numbers */
 
 import {describe, expect, it} from '@jest/globals';
-import nocap from './nocap.fn.js';
+import nap from './nap.fn.js';
 
 
-describe('rebus.nocap', () => {
+describe('rebus.nap', () => {
 
     it(
         'is a function',
-        () => void expect(nocap).toBeFun(),
+        () => void expect(nap).toBeFun(),
     );
 
 
@@ -25,7 +25,7 @@ describe('rebus.nocap', () => {
         ['(?:abcd1234)', 'abcd', '1234'],
     ])(
         'returns correct string %p for %p',
-        expect(nocap).toMapExact,
+        expect(nap).toMapExact,
     );
 
 });

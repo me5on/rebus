@@ -4,7 +4,7 @@
 // named back reference
 
 
-const nref = (
+const krf = (
 
     $ => {
         $ = String($ ?? '');
@@ -19,4 +19,4 @@ const nref = (
 );
 
 
-export default nref;
+export default krf;

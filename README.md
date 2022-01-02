@@ -51,7 +51,7 @@ provides:
 const {
   F: {none: NONE}, esc: ESC,
   C: {dot: DOT, any, return: RET},
-  or, bgn, box, end, gany, nocap,
+  or, bgn, box, end, gany, nap,
 } = rebus;
 
 const SKIP = gany(any);
@@ -68,7 +68,7 @@ const re = rebus(NONE, or(
   bgn(
     DOT,
     'Spotlight-V100',
-    nocap(or(
+    nap(or(
       '$',
       SLASH,
     )),
